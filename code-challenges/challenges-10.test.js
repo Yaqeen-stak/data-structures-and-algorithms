@@ -50,6 +50,18 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 
 const count = (target, input) => {
   // Solution code here...
+
+  let counter=input.reduce((sum,array)=>{
+    let internal = array.reduce((accumilater,value)=>{
+      if (target === value) {accumilater++;}
+      return accumilater;
+    },0);
+    sum +=internal;
+    return sum;
+    }, 0);
+    return counter
+
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -64,6 +76,25 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 
 const totalSum = (input) => {
   // Solution code here...
+
+  let sum=0;
+  // input.map(value=>{
+  //   value.foreach(element=>{
+  //     sum=sum+element
+  //   })
+   
+  // })
+  // return sum;
+  let counter= input.map((array)=>{
+    let internal = array.reduce((accumilater,value)=>{
+      accumilater += value;
+      return accumilater;
+    },0);
+    sum += internal;
+    return sum;
+  });
+  return(counter.pop());
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -80,6 +111,17 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
+
+  return input.reduce((accumilater,value)=>{
+    accumilater.push(value.reduce((accumilater1,value1)=>{
+      if (value1 %5 == 0 && Number.isInteger(value1)){
+        accumilater1.push(Math.pow(2,value1));
+      }
+      return accumilater1
+    },[]))
+    return accumilater;
+  },[])
+
 };
 
 /* ------------------------------------------------------------------------------------------------
